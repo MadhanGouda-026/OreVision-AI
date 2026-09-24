@@ -2,7 +2,7 @@
 // Every function here mirrors an endpoint defined in backend/app/main.py.
 // Field names sent to /api/predict MUST match backend/app/schemas.py::PredictionRequest exactly.
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
 
 class ApiError extends Error {
   constructor(message, status, detail) {
@@ -16,7 +16,7 @@ class ApiError extends Error {
 async function request(path, options = {}) {
   let response
   try {
-    response = await fetch(`${API_URL}${path}`, {
+    response = await fetch(`${API_BASE_URL}${path}`, {
       headers: { 'Content-Type': 'application/json' },
       ...options,
     })
