@@ -16,7 +16,7 @@ class ApiError extends Error {
 async function request(path, options = {}) {
   let response
   try {
-    response = await fetch(`${API_BASE_URL}${path}`, {
+    response = await fetch(`${API_URL}${path}`, {
       headers: { 'Content-Type': 'application/json' },
       ...options,
     })
